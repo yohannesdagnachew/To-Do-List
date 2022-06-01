@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/4aa116b8ee.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>ToDoList</title>
+  </head>
+  <body>
+    <div class="all">
+      <form id="form" class="form">
+        <div class="title">
+          <h4>Today's To Do</h4>
+          <i class="fa-solid fa-arrows-rotate refresh"></i>
+        </div>
+        <div class="form-input">
+          <input type="text" id="new-task-input" placeholder="Add Task" />
+          <button class="add"><ion-icon name="add"></ion-icon></button>
+        </div>
+      </form>
+      <section>
+        <div class="task-list"></div>
+        <button class="clear">Clear all completed</button>
+      </section>
+    </div>
+  </body>
+</html>
