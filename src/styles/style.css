@@ -21,9 +21,7 @@
 .form-input {
   display: flex;
   justify-content: space-between;
-  align-items: baseline;
   height: 3rem;
-  align-items: center;
   box-shadow: 1px 1px 5px 1px gray;
 }
 
