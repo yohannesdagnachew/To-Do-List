@@ -51,7 +51,6 @@ addButton.addEventListener('click', (e) => {
 
 newTask.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
-  const edit = document.querySelector('.edit');
   if (e.target.classList.contains('remove')) {
     e.target.parentElement.parentElement.remove();
     const k = parseInt(e.target.id, 10);
@@ -77,9 +76,6 @@ newTask.addEventListener('click', (e) => {
 });
 displayUI();
 
-const checkbox = document.querySelector('.checkbox');
-const taskpro = document.querySelector('.new-task-pro');
-
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
@@ -96,5 +92,5 @@ clear.addEventListener('click', (e) => {
     clearArrray[i].index += i;
   }
   localStorage.setItem('list', JSON.stringify(clearArrray));
-  location.reload();
+  window.location.reload()
 });
