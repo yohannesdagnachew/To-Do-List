@@ -53,8 +53,9 @@ newTask.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
   if (e.target.classList.contains('remove')) {
     e.target.parentElement.parentElement.remove();
-    const newArray = tasks.filter(Objects =>
-    Objects.index !== parseInt(e.target.id, 10));
+    const newArray = tasks.filter(Objects => { 
+      return Objects.index !== parseInt(e.target.id, 10)
+    });
    
     const k = parseInt(e.target.id, 10);
     console.log(k);
