@@ -92,5 +92,5 @@ clear.addEventListener('click', (e) => {
     clearArrray[i].index += i;
   }
   localStorage.setItem('list', JSON.stringify(clearArrray));
-  window.location.reload()
+  window.location.reload();
 });
