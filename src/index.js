@@ -6,7 +6,6 @@ const localStorageArray = JSON.parse(localStorage.getItem('list')) || [];
 const read = document.querySelector('#new-task-input');
 const taskList = document.querySelector('.task-list');
 const newTask = document.createElement('div');
-const icons = document.querySelector('.allicons');
 
 const displayUI = () => {
   localStorageArray.forEach((list) => {
@@ -57,9 +56,9 @@ newTask.addEventListener('click', (e) => {
     const newArray = tasks.filter(function (Objects) {
       return Objects.index !== parseInt(e.target.id);
     });
-    let k = parseInt(e.target.id);
+    const k = parseInt(e.target.id);
     console.log(k);
-    for (let i = k - 1; i < newArray.length; i++) {
+    for (let i = k - 1; i < newArray.length; i + 1) {
       newArray[i].index -= 1;
     }
     localStorage.setItem('list', JSON.stringify(newArray));
