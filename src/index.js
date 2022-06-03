@@ -66,7 +66,6 @@ newTask.addEventListener('click', (e) => {
   } else if (e.target.checked) {
     const k = parseInt(e.target.id, 10);
     tasks[k - 1].completed = true;
-    console.log(e.target.checked.id);
     localStorage.setItem('list', JSON.stringify(tasks));
   } else {
     const k = parseInt(e.target.id, 10);
