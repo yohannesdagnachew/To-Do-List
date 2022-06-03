@@ -1,4 +1,4 @@
-.new-task {
+.new-task-pro {
   display: grid;
   grid-template-columns: 1fr 21fr 1fr;
   align-items: baseline;
