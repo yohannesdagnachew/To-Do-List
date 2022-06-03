@@ -54,9 +54,9 @@ newTask.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove')) {
     e.target.parentElement.parentElement.remove();
     const newArray = tasks.filter(function (Objects) {
-      return Objects.index !== parseInt(e.target.id);
+      return Objects.index !== parseInt(e.target.id, 10);
     });
-    const k = parseInt(e.target.id);
+    let k = parseInt(e.target.id, 10);
     console.log(k);
     for (let i = k - 1; i < newArray.length; i + 1) {
       newArray[i].index -= 1;
