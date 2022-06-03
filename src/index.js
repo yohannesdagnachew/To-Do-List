@@ -10,7 +10,7 @@ const newTask = document.createElement('div');
 const displayUI = () => {
   localStorageArray.forEach((list) => {
     newTask.classList.add('new-task');
-    newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox'/>
+    newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox' id ='${list.index}' class='checkbox' name='checkbox'/>
         <div>
         <p class='edit'>${list.description}</p>
         </div>
@@ -25,7 +25,7 @@ const displayUI = () => {
 
 const real = (list) => {
   newTask.classList.add('new-task');
-  newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox'/>
+  newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox' id ='${list.index}' class='checkbox' name='checkbox'/>
       <div>
       <p class='edit' >${list.description}</p>
       </div>
@@ -51,6 +51,7 @@ addButton.addEventListener('click', (e) => {
 
 newTask.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
+  const edit = document.querySelector('.edit');
   if (e.target.classList.contains('remove')) {
     e.target.parentElement.parentElement.remove();
     const k = parseInt(e.target.id, 10);
@@ -60,6 +61,26 @@ newTask.addEventListener('click', (e) => {
       newArray[i].index -= 1;
     }
     localStorage.setItem('list', JSON.stringify(newArray));
+  } else if (e.target.checked) {
+    const k = parseInt(e.target.id, 10);
+    tasks[k - 1].completed = true;
+    console.log(e.target.checked.id);
+    localStorage.setItem('list', JSON.stringify(tasks));
+  } else {
+    const k = parseInt(e.target.id, 10);
+    tasks[k - 1].completed = false;
+    localStorage.setItem('list', JSON.stringify(tasks));
   }
 });
 displayUI();
+
+const checkbox = document.querySelector('.checkbox');
+const taskpro = document.querySelector('.new-task-pro');
+
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', (e) => {
+  tasks = JSON.parse(localStorage.getItem('list')) || [];
+
+  const clearArrray = tasks.filter((Objects) => Objects.completed !== true);
+  localStorage.setItem('list', JSON.stringify(clearArrray));
+});
