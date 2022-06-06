@@ -13,7 +13,7 @@
 
 ## Live Demo (if available)
 
-[Live Demo Link](notyet)
+[Live Demo Link](https://yohannesdagnachew.github.io/To-Do-List/)
 
 
 ## Getting Started
