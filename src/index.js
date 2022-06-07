@@ -1,7 +1,7 @@
 import './styles/style.css';
-import Alltask from './add.js';
-import { real, displayUI, newTask } from './reload.js';
-import { read, addButton } from './addtask.js';
+import Alltask from './js/add.js';
+import { real, displayUI, newTask } from './js/reload.js';
+import { read, addButton } from './js/addtask.js';
 
 let tasks = [];
 addButton.addEventListener('click', (e) => {
