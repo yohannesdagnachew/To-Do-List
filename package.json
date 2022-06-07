@@ -19,7 +19,7 @@
   "bugs": {
     "url": "https://github.com/yohannesdagnachew/To-Do-List/issues"
   },
-  "homepage": "https://github.com/yohannesdagnachew/To-Do-List#readme",
+  "homepage": "https://yohannesdagnachew.github.io/To-Do-List/dist/index.html",
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.27.0",
