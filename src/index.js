@@ -1,43 +1,9 @@
 import './styles/style.css';
 import Alltask from './add.js';
+import { real, displayUI, newTask } from './reload.js';
+import { read, addButton } from './addtask.js';
 
 let tasks = [];
-const localStorageArray = JSON.parse(localStorage.getItem('list')) || [];
-const read = document.querySelector('#new-task-input');
-const taskList = document.querySelector('.task-list');
-const newTask = document.createElement('div');
-
-const displayUI = () => {
-  localStorageArray.forEach((list) => {
-    newTask.classList.add('new-task');
-    newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox' id ='${list.index}' class='checkbox' name='checkbox'/>
-        <div>
-        <p class='edit'>${list.description}</p>
-        </div>
-        <div>
-        <ion-icon name='ellipsis-vertical-outline' class='dot'></ion-icon>
-        <ion-icon name='trash-outline'  class='remove' id ='${list.index}'></ion-icon>
-        </div></div>
-        `;
-    taskList.append(newTask);
-  });
-};
-
-const real = (list) => {
-  newTask.classList.add('new-task');
-  newTask.innerHTML += `<div class='new-task-pro'><input type='checkbox' id ='${list.index}' class='checkbox' name='checkbox'/>
-      <div>
-      <p class='edit' >${list.description}</p>
-      </div>
-      <div class='allicons'>
-      <ion-icon name='ellipsis-vertical-outline' class='dot'></ion-icon> 
-      <ion-icon name='trash-outline' class='remove' id ='${list.index}'></ion-icon>
-      </div></div>
-      `;
-  taskList.append(newTask);
-};
-
-const addButton = document.querySelector('.add');
 addButton.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
   e.preventDefault();
@@ -51,18 +17,17 @@ addButton.addEventListener('click', (e) => {
 
 newTask.addEventListener('click', (e) => {
   tasks = JSON.parse(localStorage.getItem('list')) || [];
+
   if (e.target.classList.contains('remove')) {
     e.target.parentElement.parentElement.remove();
     const k = parseInt(e.target.id, 10);
     const newArray = tasks.filter((Objects) => Objects.index !== k);
-
     for (let i = 0; i < newArray.length; i += 1) {
       newArray[i].index = 1;
-    }
-    for (let i = 0; i < newArray.length; i += 1) {
       newArray[i].index += i;
     }
     localStorage.setItem('list', JSON.stringify(newArray));
+    window.location.reload();
   } else if (e.target.checked) {
     const k = parseInt(e.target.id, 10);
     tasks[k - 1].completed = true;
@@ -73,7 +38,6 @@ newTask.addEventListener('click', (e) => {
     localStorage.setItem('list', JSON.stringify(tasks));
   }
 });
-displayUI();
 
 const clear = document.querySelector('.clear');
 clear.addEventListener('click', (e) => {
@@ -84,12 +48,13 @@ clear.addEventListener('click', (e) => {
   }
 
   const clearArrray = tasks.filter((Objects) => Objects.completed !== true);
+
   for (let i = 0; i < clearArrray.length; i += 1) {
     clearArrray[i].index = 1;
-  }
-  for (let i = 0; i < clearArrray.length; i += 1) {
     clearArrray[i].index += i;
   }
   localStorage.setItem('list', JSON.stringify(clearArrray));
   window.location.reload();
 });
+
+displayUI();
